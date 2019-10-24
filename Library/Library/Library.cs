@@ -29,18 +29,26 @@ namespace Library
             int counter = 0;
             while (counter <= newStorage.Length)
             {
-                if (picked )//&& counter < newStorage.Length)
+                if (picked && counter < newStorage.Length)
                 {
                     newStorage[counter] = storage[counter + 1];
                     counter++;
                 }
-                else if (index == counter)
+                else if (index == counter && !picked)
                 {
                     picked = true;
                     chosenItem = storage[counter];
+                    if(counter == newStorage.Length)
+                    {
+                        break;
+                    }
                 }
                 else
                 {
+                    if (counter == newStorage.Length)
+                    {
+                        break;
+                    }
                     newStorage[counter] = storage[counter];
                     counter++;
                 }

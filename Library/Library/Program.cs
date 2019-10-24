@@ -37,6 +37,7 @@ namespace Library
                         BorrowABook();
                         break;
                     case "4":
+                        ReturnBook();
                         break;
                     case "5":
                         ViewBookBag();
@@ -159,6 +160,10 @@ namespace Library
                 }
             }
         }
+        /// <summary>
+        /// Displays current book bag and takes users input. Adds the book back to the library and removes
+        /// book from the BookBag collection.
+        /// </summary>
         public static void ReturnBook()
         {
             Dictionary<int, Book> bookList = new Dictionary<int, Book>();
@@ -166,11 +171,16 @@ namespace Library
             Console.WriteLine("Please choose a book to return: ");
             foreach (Book book in BookBag)
             {
-                bookList.Add(count, book);
                 Console.WriteLine($"{count}: {book.Title}");
+                bookList.Add(count, book);
                 count++;
             }
-
+            Console.Write("Choice: ");
+            string input = Console.ReadLine();
+            Book chosenBook = bookList.GetValueOrDefault(Convert.ToInt32(input));
+            myLibrary.Add(chosenBook);
+            BookBag.Remove(chosenBook);
+            Console.WriteLine(chosenBook.Title + " has been returned!");
         }
     }
 }
