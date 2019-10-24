@@ -10,7 +10,10 @@ namespace Library
         //Creation of book storage for library
         private T[] storage = new T[5];
         private int currentIndex = 0;
-
+        /// <summary>
+        /// Adds an item to Library. Resizes storage array if number of items is larger than index.
+        /// </summary>
+        /// <param name="item"></param>
         public void Add(T item)
         {
             if (storage.Length == currentIndex)
@@ -20,9 +23,17 @@ namespace Library
             storage[currentIndex] = item;
             currentIndex++;
         }
-
+        /// <summary>
+        /// Removes an item from the Library based on an index given. Creates a new storage with a new length.
+        /// </summary>
+        /// <param name="index">Takes in an index position as an int.</param>
+        /// <returns>Returns the removed item.</returns>
         public T Remove(int index)
         {
+            if (index > storage.Length)
+            {
+                return default;
+            }
             T chosenItem = default;
             bool picked = false;
             T[] newStorage = new T[storage.Length - 1];
@@ -56,6 +67,14 @@ namespace Library
             currentIndex = newStorage.Length;
             storage = newStorage;
             return chosenItem;
+        }
+        /// <summary>
+        /// Returns the current index.
+        /// </summary>
+        /// <returns></returns>
+        public int ItemCount()
+        {
+            return currentIndex;
         }
 
         //Allows foreach

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    class Program
+    public class Program
     {
         public static Library<Book> myLibrary = new Library<Book>();
         public static List<Book> BookBag = new List<Book>();
@@ -138,10 +138,16 @@ namespace Library
             string userChoice = Console.ReadLine();
 
             Book chosenBook = myLibrary.Remove(Convert.ToInt32(userChoice) - 1);
-
-            BookBag.Add(chosenBook);
-            myLibrary.GetEnumerator();
-            Console.WriteLine($"{chosenBook.Title} added to Book Bag!");
+            if(chosenBook == null)
+            {
+                Console.WriteLine("Could not find book! Please try again.");
+            }
+            else
+            {
+                BookBag.Add(chosenBook);
+                myLibrary.GetEnumerator();
+                Console.WriteLine($"{chosenBook.Title} added to Book Bag!");
+            }
             Console.WriteLine();
         }
         /// <summary>
