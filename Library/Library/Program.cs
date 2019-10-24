@@ -106,7 +106,7 @@ namespace Library
             Genre chosenGenre = Genre.Other;
             foreach (Genre genre in genres)
             {
-                if((int) genre == Convert.ToInt32(inputGenre))
+                if ((int)genre == Convert.ToInt32(inputGenre))
                 {
                     chosenGenre = genre;
                 }
@@ -129,9 +129,9 @@ namespace Library
             {
                 if (book != null)
                 {
-                Console.WriteLine($"{displayCount}: {book.Title} by {book.Author.FirstName} {book.Author.LastName}." +
-                    $" Genre: {book.Genre}");
-                displayCount++;
+                    Console.WriteLine($"{displayCount}: {book.Title} by {book.Author.FirstName} {book.Author.LastName}." +
+                        $" Genre: {book.Genre}");
+                    displayCount++;
                 }
             }
             string userChoice = Console.ReadLine();
@@ -148,14 +148,14 @@ namespace Library
         /// </summary>
         public static void ViewBookBag()
         {
+            int count = 1;
             foreach (Book book in BookBag)
             {
-                int displayCount = 1;
                 if (book != null)
                 {
-                    Console.WriteLine($"{displayCount}: {book.Title} by {book.Author.FirstName} {book.Author.LastName}." +
+                    Console.WriteLine($"{count}: {book.Title} by {book.Author.FirstName} {book.Author.LastName}." +
                         $" Genre: {book.Genre}");
-                    displayCount++;
+                    count++;
                 }
             }
         }

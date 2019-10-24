@@ -26,21 +26,23 @@ namespace Library
             T chosenItem = default;
             bool picked = false;
             T[] newStorage = new T[storage.Length - 1];
-            for (int i = 0; i < newStorage.Length; i++)
+            int counter = 0;
+            while (counter <= newStorage.Length)
             {
-                if (index == i)
+                if (picked )//&& counter < newStorage.Length)
+                {
+                    newStorage[counter] = storage[counter + 1];
+                    counter++;
+                }
+                else if (index == counter)
                 {
                     picked = true;
-                    newStorage[i] = storage[i + 1];
-                    chosenItem = storage[i];
-                }
-                else if (picked)
-                {
-                    newStorage[i] = storage[i + 1];
+                    chosenItem = storage[counter];
                 }
                 else
                 {
-                    newStorage[i] = storage[i];
+                    newStorage[counter] = storage[counter];
+                    counter++;
                 }
             }
             currentIndex = newStorage.Length;
